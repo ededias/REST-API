@@ -1,6 +1,6 @@
 const express = require('express');
 const Publish = require('../Models/publish');
-router = express.Router();
+const router = express.Router();
 
 router.get('/showItens', (req, res) => {
 
@@ -19,7 +19,7 @@ router.get('/showItens', (req, res) => {
     
 });
 
-router.post('/cadItens', async (req, res) =>{
+router.post('/registerItens', async (req, res) =>{
 
     try{
 
