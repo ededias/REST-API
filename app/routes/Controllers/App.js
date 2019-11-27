@@ -13,7 +13,7 @@ router.get('/showItens', (req, res) => {
         }catch(err) {
 
             res.status(400).json({err: "Erro de conexão"});
-            
+
         }
     });
     
@@ -65,6 +65,14 @@ router.put('/showItens/:id', async (req, res) => {
 
         };
 
+    });
+
+});
+
+router.delete('/showItens/:id', async (req, res) => {
+
+    Publish.deleteOne({_id: req.params.id}, req.body, err => {
+        res.status(200).json(req.body);
     });
 
 });
