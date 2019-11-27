@@ -4,8 +4,19 @@ router = express.Router();
 
 router.get('/showItens', (req, res) => {
 
-    res.send('teste');
+    Publish.find({}).sort({title: 1}).exec((err, title)=>{
 
+        try{
+
+            res.send({title});    
+
+        }catch(err) {
+
+            res.status(400).json({err: "Erro de conexão"});
+            
+        }
+    });
+    
 });
 
 router.post('/cadItens', async (req, res) =>{
@@ -24,5 +35,39 @@ router.post('/cadItens', async (req, res) =>{
     
 });
 
+router.get('/showItens/:id', async (req, res)=>{
 
-module.exports = app => app.use('/cad', router);
+    Publish.findOne({_id: req.params.id}).exec((err, title)=>{
+        try{
+        
+            res.status(200).json(title);
+
+        }catch(err){
+
+            res.status(400).json({err: "Erro de conexão"});
+
+        }
+    });
+
+});
+
+router.put('/showItens/:id', async (req, res) => {
+
+    Publish.update({_id: req.params.id}, req.body, err =>{
+
+        try{
+        
+            res.status(200).json(req.body);
+
+        }catch(err){
+
+            res.status(400).json({err: "Erro de conexão"});
+
+        };
+
+    });
+
+});
+
+
+module.exports = app => app.use('/itens', router);
