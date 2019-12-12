@@ -1,6 +1,7 @@
-const mongoose  = require('../Database/index');
+const mongoose  = require('../../Database/index');
+const Schema = mongoose.Schema;
 
-const BlogSpot = new mongoose.Schema({
+const BlogSpot = new Schema({
     title :{
         type: String,
         unique: true,

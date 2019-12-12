@@ -51,7 +51,7 @@ router.put('/showItens/:id', async (req, res) => {
     
     try{
         const updatePublish = await Users.findById({_id: req.params.id}).updateOne(req.body);
-        console.log(updatePublish);
+        
         res.status(200).send({"title": updatePublish});
 
     }catch(err){
@@ -64,17 +64,17 @@ router.put('/showItens/:id', async (req, res) => {
 });
 
 router.delete('/deleteItem/:id', async (req, res) => {
-    console.log({_id: req.params.id});
-   
 
     try {
         
         const deletePublish = await Publish.findByIdAndDelete({_id: req.params.id});
-        console.log(deletePublish);
+        
         res.status(200).send({_id: deletePublish});
     
     } catch (err) {
+        
         res.status(400).json({err});
+    
     }
 
 });

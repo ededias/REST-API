@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Users = require('../Models/user');
-const AuthSecret = require('../Secret/Auth.json');
+const AuthSecret = require('../../Secret/Auth.json');
 
 const router = express.Router();
 
@@ -51,7 +51,7 @@ router.post('/registerUsers', async (req, res) => {
         })
 
    }catch (e) {
-
+        res.send({e});
    }
 
 });
